@@ -822,7 +822,7 @@ public enum CountryCode
         {
             alpha3Map.put(cc.getAlpha3(), cc);
             numericMap.put(cc.getNumeric(), cc);
-            nameMap.put(cc.name, cc);
+            nameMap.put(cc.name.toLowerCase(), cc);
         }
     }
 
@@ -927,8 +927,13 @@ public enum CountryCode
         }
     }
 
-    public static CountryCide getByCountryName(String countryName){
-        return nameMap.get(countryName);
+    public static CountryCode getByCountryName(String countryName){
+        if (countryName == null) 
+        {
+            return null;
+        }
+
+        return nameMap.get(countryName.toLowerCase());
     }
 
     private static CountryCode getByAlpha2Code(String code)
