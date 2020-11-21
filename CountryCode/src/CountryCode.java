@@ -814,7 +814,7 @@ public enum CountryCode
 
     private static final Map<String, CountryCode> alpha3Map = new HashMap<String, CountryCode>();
     private static final Map<Integer, CountryCode> numericMap = new HashMap<Integer, CountryCode>();
-
+    private static final Map<String, CountryCode> nameMap = new HashMap<String, CountryCode>();
 
     static
     {
@@ -822,6 +822,7 @@ public enum CountryCode
         {
             alpha3Map.put(cc.getAlpha3(), cc);
             numericMap.put(cc.getNumeric(), cc);
+            nameMap.put(cc.name, cc);
         }
     }
 
@@ -926,6 +927,9 @@ public enum CountryCode
         }
     }
 
+    public static CountryCide getByCountryName(String countryName){
+        return nameMap.get(countryName);
+    }
 
     private static CountryCode getByAlpha2Code(String code)
     {
